@@ -1,23 +1,27 @@
 import Link from "next/link";
 import chapters from "../data/chapters";
 
-const Sidebar = () => {
-  const regularNav = () => (
-    <div
-      className={`text-right col-md-3 position-fixed overflow-auto d-none d-md-inline`}
-      style={{
-        top: "120px",
-        right: "20px",
-        bottom: "0px",
-        width: "280px",
-      }}
-    >
-      <div>
+const MiniSidebar = ({ isOpen, handleClick }) => {
+  return (
+    <>
+      <div
+        className={`text-right  col-md-3 position-fixed overflow-auto d-inline d-md-none bg-white ${
+          isOpen ? "sidebar--active" : "sidebar--unactive"
+        }`}
+        style={{
+          width: "60%",
+          top: "90px",
+          bottom: "0",
+          transition: "1s",
+          zIndex: "2",
+        }}
+      >
         <h5 className="my-3">فصل های ترجمه شده</h5>
         {chapters.map((chapter) => {
           return (
             <Link href={`/${chapter.slug}`}>
               <a
+                onClick={handleClick}
                 className="side-item d-block shadow-sm p-2"
                 style={{ fontSize: "18px" }}
               >
@@ -27,9 +31,8 @@ const Sidebar = () => {
           );
         })}
       </div>
-    </div>
+    </>
   );
-  return <>{regularNav()}</>;
 };
 
-export default Sidebar;
+export default MiniSidebar;

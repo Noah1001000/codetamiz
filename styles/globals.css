@@ -65,3 +65,11 @@ h6 {
 .nav-item a:hover {
   color: white !important;
 }
+
+.sidebar--active {
+  right: 0px !important;
+}
+
+.sidebar--unactive {
+  right: -60%;
+}

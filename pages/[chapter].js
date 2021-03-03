@@ -1,10 +1,11 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import marked from "marked";
 import Sidebar from "../comps/Sidebar";
 import chapters from "../data/chapters";
 import Link from "next/link";
 import beautify from "js-beautify";
 import ScrollBtn from "../comps/ScrollBtn";
+import MiniSidebar from "../comps/MiniSidebar";
 
 import hljs from "highlight.js/lib/core";
 import java from "highlight.js/lib/languages/java";
@@ -36,6 +37,13 @@ export const getStaticProps = async (context) => {
 };
 
 const Content = ({ content, target }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleClick = (e) => {
+    setIsOpen(!isOpen);
+    console.log(isOpen);
+  };
+
   useEffect(() => {
     document.querySelectorAll("pre code").forEach((item) => {
       item.innerHTML = beautify(item.innerHTML);
@@ -49,7 +57,52 @@ const Content = ({ content, target }) => {
 
   return (
     <div className="container">
-      <div className="row align-center" style={{ paddingBottom: "60px" }}>
+      <div
+        onClick={handleClick}
+        className="position-fixed d-block d-md-none mx-2"
+        style={{
+          top: "60px",
+          right: "0",
+        }}
+      >
+        {!isOpen ? (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            width="30px"
+            height="30px"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        ) : (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            width="30px"
+            height="30px"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        )}
+      </div>
+      <div
+        className="row align-center"
+        style={{ paddingBottom: "60px", marginRight: "30px" }}
+      >
         <div className="col-12 col-md-9">
           <div
             dangerouslySetInnerHTML={{
@@ -82,6 +135,7 @@ const Content = ({ content, target }) => {
           </div>
         </div>
         <Sidebar />
+        <MiniSidebar isOpen={isOpen} handleClick={handleClick} />
       </div>
       <ScrollBtn />
     </div>

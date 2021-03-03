@@ -1,9 +1,8 @@
-import React from "react";
 import Link from "next/link";
 
 function Navbar() {
   return (
-    <div className="navbar navbar-light d-flex flex-row-reverse justify-content-between container pb-5">
+    <div className="navbar navbar-light d-flex flex-row-reverse justify-content-between container">
       <div style={{ fontSize: "30px" }}>
         <img src="/shining.svg" style={{ width: "30px", height: "30px" }} />
         کد تمیز
