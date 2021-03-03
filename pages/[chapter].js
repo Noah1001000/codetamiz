@@ -49,7 +49,7 @@ const Content = ({ content, target }) => {
 
   return (
     <div className="container">
-      <div className="row align-center">
+      <div className="row align-center" style={{ paddingBottom: "60px" }}>
         <div className="col-12 col-md-9">
           <div
             dangerouslySetInnerHTML={{
