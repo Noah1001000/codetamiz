@@ -45,6 +45,7 @@ const Content = ({ content, target }) => {
   };
 
   useEffect(() => {
+    document.querySelector("#content").innerHTML = content;
     document.querySelectorAll("pre code").forEach((item) => {
       item.innerHTML = beautify(item.innerHTML);
     });
@@ -104,11 +105,7 @@ const Content = ({ content, target }) => {
         style={{ paddingBottom: "60px", marginRight: "30px" }}
       >
         <div className="col-12 col-md-9">
-          <div
-            dangerouslySetInnerHTML={{
-              __html: content,
-            }}
-          ></div>
+          <div id="content"></div>
           <div className="d-flex justify-content-between mt-5">
             <div>
               {target.next && (
