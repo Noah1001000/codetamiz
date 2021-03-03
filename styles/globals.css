@@ -12,6 +12,11 @@ body {
 
 img {
   width: 100%;
+  pointer-events: none;
+}
+
+a {
+  text-decoration: none !important;
 }
 
 pre {
@@ -49,4 +54,14 @@ h6 {
   color: black;
   width: 36px;
   height: 30px;
+}
+
+.side-item:hover,
+.nav-item:hover {
+  background-color: #007bff !important;
+  color: white !important;
+}
+
+.nav-item a:hover {
+  color: white !important;
 }

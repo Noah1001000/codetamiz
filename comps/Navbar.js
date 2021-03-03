@@ -20,7 +20,7 @@ function Navbar() {
           />
         </a>
         <Link href="/">
-          <a className="btn btn-light">لیست فصل های ترجمه شده</a>
+          <a className="btn btn-light mx-3">لیست فصل های ترجمه شده</a>
         </Link>
       </div>
     </div>
